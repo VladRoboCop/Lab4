@@ -23,7 +23,6 @@ namespace MyNamespace.Controllers
                 var booksConfigContent = System.IO.File.ReadAllText(booksConfigPath);
                 var booksConfig = JObject.Parse(booksConfigContent);
 
-                // Если жанр не указан или указан пустой, возвращаем все книги
                 if (string.IsNullOrWhiteSpace(genre))
                 {
                     var allBooks = booksConfig["Books"].Select(b => b["Title"].ToString());
