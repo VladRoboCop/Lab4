@@ -1,0 +1,24 @@
+{
+  "Books": [
+    {
+      "Title": "To Kill a Mockingbird",
+      "Genre": "Fiction"
+    },
+    {
+      "Title": "1984",
+      "Genre": "Dystopian"
+    },
+    {
+      "Title": "The Great Gatsby",
+      "Genre": "Classic"
+    },
+    {
+      "Title": "Pride and Prejudice",
+      "Genre": "Romance"
+    },
+    {
+      "Title": "The Catcher in the Rye",
+      "Genre": "Coming-of-age"
+    }
+  ]
+}
