@@ -20,7 +20,6 @@ namespace MyNamespace.Controllers
         {
             try
             {
-                // Чтение списка книг из файла конфигурации
                 var booksConfigContent = System.IO.File.ReadAllText(booksConfigPath);
                 var booksConfig = JObject.Parse(booksConfigContent);
 
@@ -32,7 +31,6 @@ namespace MyNamespace.Controllers
                 }
                 else
                 {
-                    // Фильтруем книги по указанному жанру
                     var filteredBooks = booksConfig["Books"]
                         .Where(b => b["Genre"].ToString().Equals(genre, StringComparison.OrdinalIgnoreCase))
                         .Select(b => b["Title"].ToString());
@@ -59,11 +57,9 @@ namespace MyNamespace.Controllers
             {
                 if (id.HasValue && id >= 0 && id <= 5)
                 {
-                    // Чтение информации о пользователях из файла конфигурации
                     var usersConfigContent = System.IO.File.ReadAllText(usersConfigPath);
                     var usersConfig = JObject.Parse(usersConfigContent);
 
-                    // Поиск пользователя по id
                     var user = usersConfig.SelectToken($"$.Users[?(@.Id == {id})]");
 
                     if (user != null)
@@ -77,7 +73,6 @@ namespace MyNamespace.Controllers
                 }
                 else
                 {
-                    // Чтение информации о пользователе с id = 0
                     var defaultUser = GetUserById(0);
 
                     if (defaultUser != null)
@@ -95,8 +90,7 @@ namespace MyNamespace.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
-        // Метод для получения пользователя по id из файла конфигурации
+        
         private JObject GetUserById(int id)
         {
             var usersConfigContent = System.IO.File.ReadAllText(usersConfigPath);
